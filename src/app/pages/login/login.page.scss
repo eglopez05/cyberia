@@ -2,11 +2,13 @@ ion-content {
   --background: #020b16;
 }
 
-/* 👇 ESTE ES EL TRUCO CLAVE */
-ion-content::part(scroll) {
+/* 👇 wrapper que centra SIN romper scroll */
+.page-center {
+  min-height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px; /* importante para móviles */
 }
 
 .card {
