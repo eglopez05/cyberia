@@ -1,20 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
+  standalone: true,
+  imports: [CommonModule, FormsModule, IonicModule],
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
-  standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
 
-  constructor() { }
+  email = '';
+  pass = '';
+  msg = '';
 
-  ngOnInit() {
+  login() {
+    const savedEmail = localStorage.getItem('email');
+    const savedPass = localStorage.getItem('pass');
+
+    if (this.email === savedEmail && this.pass === savedPass) {
+      alert('Bienvenido');
+      window.location.href = 'inicio'; // o '/inicio' según tu app
+    } else {
+      this.msg = 'Datos incorrectos';
+    }
   }
-
 }
