@@ -15,3 +15,4 @@ describe('ImagenesPage', () => {
     expect(component).toBeTruthy();
   });
 });
+//

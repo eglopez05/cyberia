@@ -14,7 +14,7 @@ import { NavbarComponent } from "src/app/components/navbar/navbar.component";
     CommonModule,
     FormsModule,
     NavbarComponent
-]
+]//
 })
 export class ImagenesPage {
 
