@@ -1,122 +1,102 @@
-/* FUERZA BRUTA PARA EL HOST */
+/* ===== CONFIGURACIÓN BASE ===== */
 :host {
   display: block;
-  min-height: 100%;
-  background-color: #000000 !important;
+  height: 100%;
+  background-color: #000000;
 }
 
-/* ION-CONTENT: La clave en Ionic */
 ion-content {
-  /* Estas variables sobreescriben el motor de Ionic */
   --background: #000000 !important;
-  --background-color: #000000 !important;
-  background-color: #000000 !important;
-  color: #ffffff;
+  --overflow: auto;
+  overflow-y: auto;
 }
 
-/* RESET GENERAL */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", Arial, sans-serif;
-  color: #ffffff;
+/* Contenedor principal que centra todo el contenido */
+.main-wrapper {
+  width: 100%;
+  max-width: 1400px; /* Evita que en pantallas gigantes se estire demasiado */
+  margin: 0 auto;    /* CENTRADO HORIZONTAL DEL BLOQUE */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* CENTRADO DE HIJOS (TEXTO, SECCIONES) */
+  background-color: #000000;
+  padding-bottom: 50px;
 }
 
-/* ================= HEADER ================= */
+/* ===== HEADER CENTRADO ===== */
 .site-header {
   width: 100%;
-  background: #000000 !important;
-  border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+  display: flex;
+  justify-content: center; /* Centra la navbar dentro del header */
+  padding: 20px 0;
+  background: #000;
 }
 
 .cyber-navbar {
-  max-width: 1200px;
-  margin: 15px auto;
-  padding: 12px 20px;
+  width: 90%;
+  max-width: 1100px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #0a0a0a !important; /* Un gris casi imperceptible */
-  border-radius: 40px;
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+  padding: 10px 30px;
+  background: #050505;
+  border-radius: 50px;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.15);
 }
 
-.logo {
-  font-size: 28px;
-  text-shadow: 0 0 10px #00ffff;
-  font-weight: bold;
+/* ===== TEXTOS CENTRADOS (HERO) ===== */
+.hero {
+  text-align: center; /* Centra el texto */
+  width: 90%;
+  max-width: 800px;
+  margin: 60px 0;
 }
 
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 28px;
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #ffffff, #00ffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.nav-links a {
-  text-decoration: none;
-  font-weight: 500;
-  padding: 8px 15px;
-  transition: 0.3s;
+.hero p, .intro-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #cccccc;
+  margin: 0 auto;
 }
 
-.nav-links a:hover {
-  background: rgba(0, 255, 255, 0.1);
-  border-radius: 20px;
-  box-shadow: 0 0 12px rgba(0, 255, 255, 0.5);
+/* ===== GRID DE TARJETAS DISTRIBUIDO ===== */
+.cards-container {
+  width: 90%;
+  display: grid;
+  /* Crea columnas automáticas que se centran solas */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  gap: 30px;
+  justify-items: center; /* Centra la tarjeta dentro de su celda */
+  justify-content: center; /* Centra el grupo de celdas */
+  max-width: 1200px;
+  margin-top: 40px;
 }
 
-/* ================= USUARIO ================= */
-.user-menu { position: relative; }
-.user-btn {
-  padding: 8px 18px;
-  border-radius: 30px;
-  background: linear-gradient(90deg, #1e3a8a, #06b6d4);
-  cursor: pointer;
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
-}
-
-.user-dropdown {
-  position: absolute;
-  top: 125%;
-  right: 0;
-  width: 190px;
-  background: #050505 !important;
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
-  transition: 0.3s;
-  z-index: 999;
-}
-
-.user-menu:hover .user-dropdown {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-/* ================= CARDS (FLIP NEGRO) ================= */
-.cards {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 40px;
-  padding: 50px 20px;
-}
-
+/* ===== ESTILO DE LA TARJETA (Ajustado) ===== */
 .card {
-  width: 280px;
-  height: 360px;
+  width: 100%;
+  max-width: 280px;
+  height: 350px;
   perspective: 1000px;
 }
 
 .card-inner {
   width: 100%;
   height: 100%;
-  transition: transform 0.8s;
+  position: relative;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
 }
 
@@ -128,30 +108,40 @@ ion-content {
   position: absolute;
   width: 100%;
   height: 100%;
-  border-radius: 20px;
   backface-visibility: hidden;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 25px;
+  padding: 20px;
   border: 2px solid #00ffff;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
-}
-
-.card-front {
-  background: #000000 !important;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+  background: #000;
 }
 
 .card-back {
-  background: #0a0a0a !important;
   transform: rotateY(180deg);
+  background: #0a0a0a;
+  border-color: #ff007a; /* Color neón diferente para el reverso */
 }
 
-/* ================= FOOTER ================= */
+.card img {
+  width: 100px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.card h3 {
+  font-size: 1.4rem;
+  color: #fff;
+  margin: 0;
+}
+
+/* ===== FOOTER ===== */
 footer {
+  margin-top: 80px;
   text-align: center;
-  padding: 40px;
-  border-top: 1px solid rgba(0, 255, 255, 0.3);
-  background: #000000 !important;
+  color: #555;
+  font-size: 0.9rem;
 }
