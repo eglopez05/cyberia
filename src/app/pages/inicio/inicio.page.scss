@@ -1,128 +1,104 @@
+/* ===== CONFIGURACIÓN DE IONIC Y SCROLL ===== */
 :host {
   display: block;
-  min-height: 100%;
+  height: 100%;
+  background-color: #000000;
 }
 
-/* Fondo general */
 ion-content {
-  --background: radial-gradient(circle at top, #0a2a33, #000);
-  color: #ffffff;
+  --background: #000000 !important;
+  background-color: #000000 !important;
+  /* Habilita el scroll interno de Ionic */
+  --overflow: auto;
+  overflow-y: auto;
 }
 
-/* RESET */
+/* Contenedor que permite que el alto crezca */
+.main-wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #000000;
+}
+
+/* RESET GENERAL */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", Arial, sans-serif;
+  font-family: "Segoe UI", system-ui, sans-serif;
   color: #ffffff;
 }
 
-/* ================= HEADER ================= */
-
+/* ================= NAVBAR & HEADER ================= */
 .site-header {
   width: 100%;
-  background: linear-gradient(90deg, #020617, #0b1120);
-  border-bottom: 1px solid rgba(0,255,255,.2);
+  background: #000000;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-/* NAVBAR */
 .cyber-navbar {
   max-width: 1200px;
-  margin: auto;
+  margin: 10px auto;
   padding: 12px 20px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  background: linear-gradient(90deg, #020617, #020617);
+  background: #0a0a0a;
   border-radius: 40px;
-
-  box-shadow:
-    0 0 10px rgba(0,255,255,.4),
-    0 0 25px rgba(0,255,255,.25);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
 }
 
-/* LOGO */
 .logo {
-  font-size: 28px;
-  color: #ffffff;
+  font-size: 24px;
+  color: #00ffff;
   text-shadow: 0 0 10px #00ffff;
+  font-weight: bold;
 }
 
-/* LINKS NAVBAR */
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 28px;
+  gap: 20px;
 }
 
 .nav-links a {
-  color: #ffffff;
   text-decoration: none;
   font-weight: 500;
-  padding: 6px 12px;
-  border-radius: 20px;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .nav-links a:hover {
-  background: rgba(0,255,255,.12);
-  color: #ffffff;
-  box-shadow: 0 0 12px rgba(0,255,255,.8);
+  color: #00ffff;
+  text-shadow: 0 0 8px #00ffff;
 }
 
-/* ================= USUARIO ================= */
-
-.user-menu {
-  position: relative;
-}
-
+/* MENÚ USUARIO */
+.user-menu { position: relative; }
 .user-btn {
-  padding: 8px 18px;
+  padding: 8px 20px;
   border-radius: 30px;
-  background: linear-gradient(90deg,#1e3a8a,#06b6d4);
-  color: #ffffff;
-  font-weight: 500;
+  background: linear-gradient(90deg, #1e3a8a, #06b6d4);
   cursor: pointer;
-
-  box-shadow:
-    0 0 10px #00ffff,
-    0 0 25px rgba(0,255,255,.6);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
 }
 
-/* DROPDOWN */
 .user-dropdown {
   position: absolute;
   top: 120%;
   right: 0;
-  width: 190px;
-
-  background: #020617;
-  border-radius: 15px;
-
-  box-shadow: 0 0 20px rgba(0,255,255,.7);
-
-  overflow: hidden;
-
+  width: 180px;
+  background: #0a0a0a;
+  border: 1px solid #00ffff;
+  border-radius: 12px;
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
-  transition: .3s;
-}
-
-.user-dropdown a {
-  display: block;
-  padding: 14px;
-  color: #ffffff;
-  text-decoration: none;
-  transition: .3s;
-}
-
-.user-dropdown a:hover {
-  background: rgba(0,255,255,.15);
-  color: #ffffff;
+  transition: 0.3s;
+  z-index: 1100;
 }
 
 .user-menu:hover .user-dropdown {
@@ -131,54 +107,57 @@ ion-content {
   transform: translateY(0);
 }
 
-/* ================= HERO ================= */
+.user-dropdown a {
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 14px;
+}
 
+.user-dropdown a:hover {
+  background: rgba(0, 255, 255, 0.1);
+}
+
+/* ================= SECCIÓN HERO ================= */
 .hero {
   text-align: center;
-  margin-top: 20px;
+  padding: 80px 20px;
 }
 
 .hero h1 {
-  color: #ffffff;
-  font-size: 48px;
-  letter-spacing: 2px;
+  font-size: 3.5rem;
+  background: linear-gradient(90deg, #ffffff, #00f6ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
 }
 
 .hero p {
-  color: #ffffff;
-  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #b0b0b0;
 }
 
-/* ================= INTRO ================= */
-
-.intro {
-  max-width: 700px;
-  margin: auto;
-  padding: 20px;
-  text-align: center;
-  color: #ffffff;
-}
-
-/* ================= CARDS ================= */
-
+/* ================= TARJETAS (FLIP) ================= */
 .cards {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 40px;
-  padding: 50px;
+  gap: 30px;
+  padding: 40px 20px;
+  /* Importante: no poner height fijo aquí */
 }
 
 .card {
-  width: 260px;
-  height: 340px;
+  width: 280px;
+  height: 380px;
   perspective: 1000px;
 }
 
 .card-inner {
   width: 100%;
   height: 100%;
-  transition: transform 0.8s;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
 }
 
@@ -186,52 +165,54 @@ ion-content {
   transform: rotateY(180deg);
 }
 
-.card-front,
-.card-back {
+.card-front, .card-back {
   position: absolute;
   width: 100%;
   height: 100%;
-  border-radius: 20px;
-
-  background: rgba(0,255,255,0.08);
-  border: 2px solid cyan;
-
-  box-shadow: 0 0 25px cyan;
-
+  border-radius: 24px;
+  backface-visibility: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   padding: 20px;
-  backface-visibility: hidden;
-  text-align: center;
-  color: #ffffff;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+.card-front {
+  background: #0a0a0a;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
 }
 
 .card-front img {
-  width: 100px;
-  margin-bottom: 20px;
-  filter: drop-shadow(0 0 10px cyan);
+  width: 80px;
+  margin-bottom: 15px;
+  filter: drop-shadow(0 0 10px #00ffff);
 }
 
 .card-back {
+  background: #050505;
   transform: rotateY(180deg);
-  background: rgba(0,40,50,0.9);
+  border-color: #7b2cff;
+  box-shadow: 0 0 20px rgba(123, 44, 255, 0.2);
 }
 
 .card-back p {
-  font-size: 0.95em;
+  font-size: 0.95rem;
   line-height: 1.5;
-  color: #ffffff;
+  color: #d0d0d0;
 }
 
 /* ================= FOOTER ================= */
-
 footer {
   text-align: center;
-  padding: 30px;
-  border-top: 1px solid cyan;
-  margin-top: 40px;
-  color: #ffffff;
+  padding: 60px 20px;
+  background: #000000;
+  border-top: 1px solid rgba(0, 255, 255, 0.1);
+  margin-top: auto; /* Empuja el footer al final */
+}
+
+footer p {
+  color: #666;
+  font-size: 14px;
 }
